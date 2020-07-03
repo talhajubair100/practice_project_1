@@ -3,60 +3,63 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Site Metas -->
-    <title>Markedia - Marketing Blog Template</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!-- Site Metas -->
+<title>Markedia - Marketing Blog Template</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<!-- Site Icons -->
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <!-- Design fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+<!-- Design fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
-    <!-- FontAwesome Icons core CSS -->
-    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+<!-- FontAwesome Icons core CSS -->
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-    <!-- Animate styles for this template -->
-    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+<!-- Animate styles for this template -->
+<link href="{% static 'css/animate.css' %}" rel="stylesheet">
 
-    <!-- Responsive styles for this template -->
-    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+<!-- Responsive styles for this template -->
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 
-    <!-- Colors for this template -->
-    <link href="{% static 'css/colors.css' %}" rel="stylesheet">
+<!-- Colors for this template -->
+<link href="{% static 'css/colors.css' %}" rel="stylesheet">
 
-    <!-- Version Marketing CSS for this template -->
-    <link href="{% static 'css/version/marketing.css' %}" rel="stylesheet">
+<!-- Version Marketing CSS for this template -->
+<link href="{% static 'css/version/marketing.css' %}" rel="stylesheet">
 
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
+
 <body>
 
     <div id="wrapper">
         <header class="market-header header">
             <div class="container-fluid">
                 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -83,7 +86,7 @@
             </div><!-- end container-fluid -->
         </header><!-- end market-header -->
 
-        
+
 
         <section class="section lb mt-3">
             <div class="container">
@@ -91,9 +94,9 @@
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
                             <div class="blog-custom-build">
-                              
+
                                 {% block content %}
-          
+
                                 {% endblock  %}
 
 
@@ -111,45 +114,33 @@
                                 <h2 class="widget-title">Recent Posts</h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    {% for post in latest_post %}
+                                      
+                                        <a href="{% url 'detail-post' post.id %}"
+                                            class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="upload/small_07.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                                <small>12 Jan, 2016</small>
+                                                <img src="{{ post.photo.url }}" alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">{{ post.title }}</h5>
+                                                <small>{{ post.date }}</small>
                                             </div>
                                         </a>
 
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="upload/small_08.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Let's make an introduction for creative life</h5>
-                                                <small>11 Jan, 2016</small>
-                                            </div>
-                                        </a>
+                                    {% endfor %}    
+                                    
 
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <img src="upload/small_09.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
-                                                <small>07 Jan, 2016</small>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
 
 
                             <div class="widget">
-                                <h2 class="widget-title">Popular Categories</h2>
+                                <h2 class="widget-title">Categories</h2>
                                 <div class="link-widget">
                                     <ul>
-                                        <li><a href="#">Marketing <span>(21)</span></a></li>
-                                        <li><a href="#">SEO Service <span>(15)</span></a></li>
-                                        <li><a href="#">Digital Agency <span>(31)</span></a></li>
-                                        <li><a href="#">Make Money <span>(22)</span></a></li>
-                                        <li><a href="#">Blogging <span>(66)</span></a></li>
-                                        <li><a href="#">Entertaintment <span>(11)</span></a></li>
-                                        <li><a href="#">Video Tuts <span>(87)</span></a></li>
+                                    {% for ctg in categories %}
+                                    <li><a href="{% url 'category-list' ctg.name %}">{{ ctg.name }} <span>{{ ctg.post_set.count }}</span></a></li>
+                                      
+                                    {% endfor %}
                                     </ul>
                                 </div><!-- end link-widget -->
                             </div><!-- end widget -->
@@ -163,7 +154,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <div class="copyright">&copy; Markedia. Design: <a href="http://html.design">HTML Design</a>.</div>
+                        <div class="copyright">&copy; Design: <a href="https://www.facebook.com/talha.jubair.100">Talha
+                                Jubair</a>.</div>
                     </div>
                 </div>
             </div><!-- end container -->
@@ -182,4 +174,5 @@
     <script src="{% static 'js/custom.js' %}"></script>
 
 </body>
+
 </html>

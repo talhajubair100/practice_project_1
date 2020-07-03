@@ -25,9 +25,9 @@
                         <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
                     </ul>
                 </div><!-- end post-sharing -->
-                <h4><a href="marketing-single.html" title="">{{ post.title }}</a></h4>
+                <h4><a href="" title="">{{ post.title }}</a></h4>
                 <p>{{ post.body }}</p>
-                <small><a href="" title="">{{ post.category }}</a></small>
+                <small><a href="{% url 'category-list' post.category.name %}" title="">{{ post.category }}</a></small>
                 <small>{{ post.date }}</small>
             </div><!-- end meta -->
         </div><!-- end blog-box -->
