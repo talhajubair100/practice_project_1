@@ -12,3 +12,6 @@ def student_details(request, id):
     details_obj = Student.objects.get(id=id)
     context = {'std_details': details_obj}
     return render(request, 'student/student_details.html', context)
+
+
+#Student.objects.filter(roll__gte=1, roll__lte=4)
